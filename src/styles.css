@@ -1,0 +1,103 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-navy: var(--navy);
+  --color-navy-light: var(--navy-light);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --font-display: "Montserrat", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.18 0.05 265);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.05 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.05 265);
+
+  /* Brand — Suvishesh Yashom (Deep Blue) */
+  --navy: oklch(0.22 0.07 260);          /* #0B1F3A */
+  --navy-light: oklch(0.34 0.13 265);    /* #1E3A8A */
+  --gold: oklch(0.60 0.18 258);          /* accent blue ~ #3B82F6 */
+  --gold-light: oklch(0.72 0.14 250);    /* lighter accent ~ #60A5FA */
+
+  --primary: var(--navy);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.975 0.005 250);   /* #F8FAFC */
+  --secondary-foreground: var(--navy);
+  --muted: oklch(0.975 0.005 250);
+  --muted-foreground: oklch(0.45 0.02 260);
+  --accent: var(--gold);
+  --accent-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.58 0.24 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.92 0.01 250);
+  --input: oklch(0.92 0.01 250);
+  --ring: var(--gold);
+
+  --gradient-hero: linear-gradient(135deg, oklch(0.22 0.07 260 / 0.92), oklch(0.18 0.07 260 / 0.78));
+  --gradient-gold: linear-gradient(135deg, var(--navy-light), var(--gold));
+  --gradient-blue: linear-gradient(135deg, var(--navy), var(--navy-light));
+  --shadow-elegant: 0 20px 60px -20px oklch(0.22 0.07 260 / 0.35);
+  --shadow-gold: 0 12px 30px -10px oklch(0.45 0.18 260 / 0.45);
+}
+
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+@utility container-x {
+  margin-inline: auto;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 768px) {
+  .container-x { padding-inline: 2rem; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@utility animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
